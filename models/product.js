@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
+const autoIncrement = require('@typegoose/auto-increment');
 
+// Product schema
 const productSchema = mongoose.Schema({
+    _id: {
+        type: Number
+    },
     quantity: {
         type: Number,
         required: true
@@ -11,13 +16,17 @@ const productSchema = mongoose.Schema({
     }
 });
 
-// productSchema.virtual('id').get(function () {
-//     return this._id.toHexString();
-// });
+// Use a plugin to automatically increment _id for each new product added
+productSchema.plugin(autoIncrement.AutoIncrementID, { startAt: 1 });
 
-// productSchema.set('toJSON', {
-//     virtuals: true
-// });
+// Remove unnecessary properties from products when serializing to JSON
+productSchema.set("toJSON", {
+    transform: (doc, ret, options) => {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.__v;
+    }
+});
 
 const Product = mongoose.model("Product", productSchema);
 

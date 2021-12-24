@@ -2,19 +2,24 @@ POST http://127.0.0.1:8000/products/create
 Content-Type: application/json
 
 {
-    "name": "shirt",
+    "name": "watch",
     "quantity": 10
 }
 
 ###
 
-POST http://127.0.0.1:8000/products/61ae874baea17b0f9ccee826/update_quantity?quantity=10
+POST http://127.0.0.1:8000/products/1/update_quantity?quantity=10
+Content-Type: application/json
+
+
+###
+POST http://127.0.0.1:8000/products/1/update_quantity?number=-10
 Content-Type: application/json
 
 
 ###
 
-DELETE http://127.0.0.1:8000/products/61ae874baea17b0f9ccee826
+DELETE http://127.0.0.1:8000/products/3
 Content-Type: application/json
 
 

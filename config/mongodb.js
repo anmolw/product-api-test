@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017");
+mongoose.connect("mongodb://127.0.0.1:27017/productapi");
 
 const db = mongoose.connection;
 db.once("connected", (err) => {

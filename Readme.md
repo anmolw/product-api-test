@@ -1,4 +1,4 @@
-# Ecommerce API Skill test
+# Ecommerce API test
 
 ## API Spec
 
@@ -20,7 +20,9 @@ Response:
 {
     "product": {
         "name": "Shirt",
-        "quantity": 20
+        "quantity": 20,
+        "id": 1,
+
     },
     "message": "product successfully created"
 }
@@ -28,7 +30,7 @@ Response:
 
 ### Obtaining a list of products
 
-Make a GET request to `/products`
+Make a `GET` request to `/products`
 
 Response:
 
@@ -56,23 +58,31 @@ Response:
 
 ### Updating the quantity of a product
 
-Make a POST request to /products/:id/update_quantity?quantity=[+/-]value
+Make a `POST` request to `/products/id/update_quantity?number=value`
+
+For example, if a product with id 2 has a quantity of 20, the following request will reduce the quantity by 10
+
+`POST /products/2/update_quantity?number=-10`
 
 Response:
 
 ```json
 {
     "product": {
-        "name": "",
-        "quantity": 20
+        "name": "tennis ball",
+        "quantity": 10
     },
     "message": "Product updated successfully"
 }
 ```
 
+A positive value will increment the quantity.
+
 ### Deleting a product
 
-Make a DELETE request to /products/:id
+Make a DELETE request to /products/id
+
+`DELETE /products/1`
 
 Response:
 
@@ -89,7 +99,7 @@ Install the package dependencies
 npm install
 ```
 
-Ensure that MongoDB is running locally. If it is running on a port other than 27017, edit `config/mongodb.js` and change the connection URL.
+Ensure that MongoDB is running locally at port 27017. If it is running on a different host or port, edit `config/mongodb.js` and change the connection string.
 
 Run index.js
 ```shell
