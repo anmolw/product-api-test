@@ -9,9 +9,10 @@ module.exports.create = async (req, res) => {
                 message: "Quantity cannot be negative"
             });
         }
+        // Create and save a new product
         const newProduct = await Product.create({
-            name: req.body.name,
-            quantity: req.body.quantity
+            name: req.body.product.name,
+            quantity: req.body.product.quantity
         });
         res.status(201).json({
             product: newProduct
@@ -44,6 +45,7 @@ module.exports.getProducts = async (req, res) => {
 module.exports.deleteProduct = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
+        // If the product exists in the database, delete it
         if (product) {
             product.remove();
             res.status(200).json({
@@ -68,6 +70,8 @@ module.exports.updateQuantity = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
         if (product) {
+            // Parse the given quantity in the URL params as an integer and add it to
+            // the product's quantity
             product.quantity += parseInt(req.query.number);
 
             // Ensure that the new product quantity is not negative

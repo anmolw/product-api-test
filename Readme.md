@@ -76,7 +76,7 @@ Response:
 }
 ```
 
-A positive value will increment the quantity.
+A positive value will increase the quantity.
 
 ### Deleting a product
 
@@ -100,6 +100,7 @@ npm install
 ```
 
 Ensure that MongoDB is running locally at port 27017. If it is running on a different host or port, edit `config/mongodb.js` and change the connection string.
+To change the port that the server listens on, edit `PORT` in index.js
 
 Run index.js
 ```shell

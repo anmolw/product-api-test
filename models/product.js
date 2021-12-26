@@ -4,6 +4,7 @@ const autoIncrement = require('@typegoose/auto-increment');
 // Product schema
 const productSchema = mongoose.Schema({
     _id: {
+        // _id's type is set to number, and will be managed by the auto-increment plugin
         type: Number
     },
     quantity: {

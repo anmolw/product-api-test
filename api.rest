@@ -2,8 +2,10 @@ POST http://127.0.0.1:8000/products/create
 Content-Type: application/json
 
 {
-    "name": "watch",
-    "quantity": 10
+    "product": {
+        "name": "watch",
+        "quantity": 10
+    }
 }
 
 ###
